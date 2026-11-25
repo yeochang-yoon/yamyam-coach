@@ -1,0 +1,52 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value="${title}"/> · 냠냠코치</title>
+    <link rel="stylesheet" href="<c:url value='/vendor/bootstrap.min.css'/>">
+    <link rel="stylesheet" href="<c:url value='/style.css'/>">
+    <script src="<c:url value='/js/page.js'/>" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="app-width header-inner">
+        <a class="brand" href="<c:url value='/app/meals'/>">
+            <span class="brand-mark" aria-hidden="true">냠</span><span>냠냠코치</span>
+        </a>
+        <nav class="site-nav" aria-label="주 메뉴">
+            <a class="nav-button ${section eq 'meals' ? 'active' : ''}"
+               href="<c:url value='/app/meals'/>">식단 기록</a>
+            <a class="nav-button ${section eq 'foods' ? 'active' : ''}"
+               href="<c:url value='/app/foods'/>">음식 검색</a>
+            <c:if test="${not empty currentUser}">
+                <a class="nav-button ${section eq 'profile' ? 'active' : ''}"
+                   href="<c:url value='/app/profile'/>">내 정보</a>
+            </c:if>
+        </nav>
+        <div class="account-tools">
+            <c:choose>
+                <c:when test="${empty currentUser}">
+                    <a class="btn btn-outline-secondary btn-sm" href="<c:url value='/app/login'/>">로그인</a>
+                </c:when>
+                <c:otherwise>
+                    <span><c:out value="${currentUser.name}"/>님</span>
+                    <form method="post" action="<c:url value='/app/logout'/>">
+                        <input type="hidden" name="csrf" value="<c:out value='${csrf}'/>">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">로그아웃</button>
+                    </form>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+</header>
+<main class="app-width main-content">
+    <c:if test="${not empty error}">
+    <p class="alert alert-danger" role="alert"><c:out value="${error}"/></p>
+    </c:if>
+    <c:if test="${not empty message}">
+    <p class="alert alert-light" role="status"><c:out value="${message}"/></p>
+    </c:if>
