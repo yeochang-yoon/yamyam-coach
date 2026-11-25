@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.yamyam.repository.MealMapper">
+    <resultMap id="meal" type="dev.yamyam.domain.Meal">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="date" column="meal_date"/>
+        <result property="type" column="meal_type"/>
+        <result property="note" column="note"/>
+        <collection property="items" ofType="dev.yamyam.domain.Meal$Item" notNullColumn="position_no">
+            <id property="position" column="position_no"/>
+            <result property="amount" column="amount"/>
+            <association property="food" resultMap="dev.yamyam.repository.FoodMapper.food" columnPrefix="item_"/>
+        </collection>
+    </resultMap>
+
+    <sql id="mealRows">
+        SELECT m.id, m.user_id, m.meal_date, m.meal_type, m.note, i.position_no, i.amount,
+               f.food_code AS item_food_code, f.food_name AS item_food_name,
+               f.basis_amount AS item_basis_amount, f.basis_unit AS item_basis_unit,
+               f.calories AS item_calories, f.protein AS item_protein,
+               f.carbs AS item_carbs, f.fat AS item_fat
+        FROM meals m
+        LEFT JOIN meal_items i ON i.meal_id = m.id
+        LEFT JOIN foods f ON f.food_code = i.food_code
+    </sql>
+
+    <select id="findAll" resultMap="meal" resultOrdered="true">
+        <include refid="mealRows"/>
+        WHERE m.user_id = #{userId}
+        <if test="date != null">AND m.meal_date = #{date}</if>
+        ORDER BY m.meal_date DESC, m.id, i.position_no
+    </select>
+
+    <select id="findById" resultMap="meal" resultOrdered="true">
+        <include refid="mealRows"/>
+        WHERE m.user_id = #{userId} AND m.id = #{id}
+        ORDER BY i.position_no
+    </select>
+
+    <select id="lockById" resultType="string">
+        SELECT id FROM meals
+        WHERE user_id = #{userId} AND id = #{id}
+        FOR UPDATE
+    </select>
+
+    <insert id="insert">
+        INSERT INTO meals (id, user_id, meal_date, meal_type, note)
+        VALUES (#{id}, #{userId}, #{date}, #{type}, #{note})
+    </insert>
+
+    <update id="update">
+        UPDATE meals
+        SET meal_date = #{date}, meal_type = #{type}, note = #{note}
+        WHERE user_id = #{userId} AND id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM meals
+        WHERE user_id = #{userId} AND id = #{id}
+    </delete>
+
+    <delete id="deleteItems">
+        DELETE FROM meal_items
+        WHERE meal_id = #{mealId}
+    </delete>
+
+    <insert id="insertItems">
+        INSERT INTO meal_items (meal_id, position_no, food_code, amount)
+        VALUES
+        <foreach collection="items" item="item" separator=",">
+            (#{id}, #{item.position}, #{item.food.foodCode}, #{item.amount})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.yamyam.repository.FoodMapper">
+    <resultMap id="food" type="dev.yamyam.domain.Food">
+        <constructor>
+            <idArg column="food_code" javaType="string"/>
+            <arg column="food_name" javaType="string"/>
+            <arg column="basis_amount" javaType="_int"/>
+            <arg column="basis_unit" javaType="string"/>
+            <arg column="calories" javaType="_double"/>
+            <arg column="protein" javaType="_double"/>
+            <arg column="carbs" javaType="_double"/>
+            <arg column="fat" javaType="_double"/>
+        </constructor>
+    </resultMap>
+
+    <sql id="foodColumns">
+        food_code, food_name, basis_amount, basis_unit, calories, protein, carbs, fat
+    </sql>
+
+    <select id="search" resultMap="food">
+        SELECT <include refid="foodColumns"/>
+        FROM foods
+        <where>
+            <if test="query != ''">
+                <choose>
+                    <when test="prefix">LOCATE(#{query}, food_name) = 1</when>
+                    <otherwise>LOCATE(#{query}, food_name) &gt; 0 OR UPPER(food_code) = UPPER(#{query})</otherwise>
+                </choose>
+            </if>
+        </where>
+        ORDER BY
+        <choose>
+            <when test="prefix">food_name, food_code</when>
+            <otherwise>food_code</otherwise>
+        </choose>
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="findByCodes" resultMap="food">
+        SELECT <include refid="foodColumns"/>
+        FROM foods
+        WHERE food_code IN
+        <foreach collection="codes" item="code" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </select>
+</mapper>

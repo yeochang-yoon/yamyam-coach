@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.yamyam.repository.UserMapper">
+    <resultMap id="user" type="dev.yamyam.domain.User">
+        <constructor>
+            <idArg column="id" javaType="string"/>
+            <arg column="username" javaType="string"/>
+            <arg column="password_hash" javaType="string"/>
+            <arg column="display_name" javaType="string"/>
+            <arg column="height_cm" javaType="_double"/>
+            <arg column="weight_kg" javaType="_double"/>
+            <arg column="conditions_note" javaType="string"/>
+            <arg column="status" javaType="string"/>
+        </constructor>
+    </resultMap>
+
+    <sql id="userColumns">
+        id, username, password_hash, display_name, height_cm, weight_kg, conditions_note, status
+    </sql>
+
+    <select id="findByUsername" resultMap="user">
+        SELECT <include refid="userColumns"/>
+        FROM users
+        WHERE username = #{username}
+    </select>
+
+    <select id="findById" resultMap="user">
+        SELECT <include refid="userColumns"/>
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO users (<include refid="userColumns"/>)
+        VALUES (#{id}, #{username}, #{passwordHash}, #{name}, #{height}, #{weight}, #{conditions}, #{status})
+    </insert>
+
+    <update id="updateProfile">
+        UPDATE users
+        SET display_name = #{name}, height_cm = #{height}, weight_kg = #{weight}, conditions_note = #{conditions}
+        WHERE id = #{id} AND status = 'ACTIVE'
+    </update>
+
+    <delete id="delete">
+        DELETE FROM users
+        WHERE id = #{id} AND status = 'ACTIVE'
+    </delete>
+</mapper>
