@@ -1,0 +1,950 @@
+{
+  "meals": [
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2025-04-21",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 50,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "date": "2025-04-21",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-018000000-0001",
+          "amount": 330,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-253000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "date": "2025-04-21",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D308-388000000-0001",
+          "amount": 135,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "date": "2025-04-22",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D504-181090000-0001",
+          "amount": 280,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-597000000-0001",
+          "amount": 45,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "date": "2025-04-22",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-006000000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-462155200-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "date": "2025-04-22",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-006000000-0001",
+          "amount": 165,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D111-517000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D105-216010000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-472000000-0001",
+          "amount": 20,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "date": "2025-04-23",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D102-096060000-0001",
+          "amount": 175,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-748000000-0305",
+          "amount": 220,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "date": "2025-04-23",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-044000000-0001",
+          "amount": 360,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640320000-0001",
+          "amount": 80,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "date": "2025-04-23",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-383000000-0001",
+          "amount": 120,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 200,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "date": "2025-04-24",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 140,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D111-517000000-0001",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "date": "2025-04-24",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D103-146000000-0001",
+          "amount": 380,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "date": "2025-04-24",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 185,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-392000000-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-597000000-0001",
+          "amount": 60,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "date": "2025-04-25",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D202-115000000-0028",
+          "amount": 110,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-716000000-0068",
+          "amount": 190,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 75,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "date": "2025-04-25",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-386000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 60,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "date": "2025-04-25",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-016000000-0001",
+          "amount": 170,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-462155200-0001",
+          "amount": 155,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-253000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "date": "2025-04-26",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D301-009170000-0001",
+          "amount": 240,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 95,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-472000000-0001",
+          "amount": 20,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "date": "2025-04-26",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640080000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-716000000-0068",
+          "amount": 140,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "date": "2025-04-26",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 170,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-386000000-0001",
+          "amount": 130,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 170,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "date": "2025-04-27",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D202-115000000-0028",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D219-712000000-0004",
+          "amount": 160,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 65,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "date": "2025-04-27",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-016000000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-492000000-0001",
+          "amount": 155,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 85,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "date": "2025-04-27",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 160,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D308-388000000-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640320000-0001",
+          "amount": 100,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "userId": 2,
+      "date": "2025-04-21",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D102-096060000-0001",
+          "amount": 175,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-748000000-0305",
+          "amount": 220,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "userId": 2,
+      "date": "2025-04-21",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-016000000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-492000000-0001",
+          "amount": 155,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 85,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "userId": 2,
+      "date": "2025-04-21",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-383000000-0001",
+          "amount": 120,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 200,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "userId": 2,
+      "date": "2025-04-22",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D202-115000000-0028",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D219-712000000-0004",
+          "amount": 160,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 65,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "userId": 2,
+      "date": "2025-04-22",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-018000000-0001",
+          "amount": 330,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-253000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "userId": 2,
+      "date": "2025-04-22",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 185,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-392000000-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-597000000-0001",
+          "amount": 60,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "userId": 2,
+      "date": "2025-04-23",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 50,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "userId": 2,
+      "date": "2025-04-23",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640080000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-716000000-0068",
+          "amount": 140,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "userId": 2,
+      "date": "2025-04-23",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-016000000-0001",
+          "amount": 170,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-462155200-0001",
+          "amount": 155,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-253000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "userId": 2,
+      "date": "2025-04-24",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D301-009170000-0001",
+          "amount": 240,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D109-416000000-0001",
+          "amount": 95,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-472000000-0001",
+          "amount": 20,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "userId": 2,
+      "date": "2025-04-24",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-386000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 60,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "userId": 2,
+      "date": "2025-04-24",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D301-022000000-0001",
+          "amount": 160,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D308-388000000-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640320000-0001",
+          "amount": 100,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "userId": 2,
+      "date": "2025-04-25",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D504-181090000-0001",
+          "amount": 280,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-597000000-0001",
+          "amount": 45,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "userId": 2,
+      "date": "2025-04-25",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-044000000-0001",
+          "amount": 360,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-640320000-0001",
+          "amount": 80,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "userId": 2,
+      "date": "2025-04-25",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D308-388000000-0001",
+          "amount": 135,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "userId": 2,
+      "date": "2025-04-26",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D202-115000000-0028",
+          "amount": 110,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D220-716000000-0068",
+          "amount": 190,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D107-317150000-0001",
+          "amount": 75,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "userId": 2,
+      "date": "2025-04-26",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D103-146000000-0001",
+          "amount": 380,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D114-644140000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "userId": 2,
+      "date": "2025-04-26",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-006000000-0001",
+          "amount": 165,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D111-517000000-0001",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D105-216010000-0001",
+          "amount": 180,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-472000000-0001",
+          "amount": 20,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "userId": 2,
+      "date": "2025-04-27",
+      "type": "아침",
+      "foods": [
+        {
+          "foodCode": "D101-050000000-0001",
+          "amount": 140,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D111-517000000-0001",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 180,
+          "unit": "mL"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "userId": 2,
+      "date": "2025-04-27",
+      "type": "점심",
+      "foods": [
+        {
+          "foodCode": "D101-006000000-0001",
+          "amount": 190,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D110-462155200-0001",
+          "amount": 145,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "userId": 2,
+      "date": "2025-04-27",
+      "type": "저녁",
+      "foods": [
+        {
+          "foodCode": "D101-032000000-0001",
+          "amount": 170,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D108-386000000-0001",
+          "amount": 130,
+          "unit": "g"
+        },
+        {
+          "foodCode": "D405-223000000-0001",
+          "amount": 170,
+          "unit": "mL"
+        },
+        {
+          "foodCode": "D113-586000000-0001",
+          "amount": 55,
+          "unit": "g"
+        }
+      ]
+    }
+  ]
+}
