@@ -1,0 +1,34 @@
+**/target/
+**/runtime/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/node_modules/
+.tools/
+.work/
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+
+# Original project documents and source spreadsheets
+/data/
+/프로젝트 명세서/
+*.pdf
+*.xls
+*.xlsx
+*.xlsm
+
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
