@@ -1,0 +1,87 @@
+name: Verify projects
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [pjt1, pjt2, pjt4, pjt5, pjt7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Java tests
+        working-directory: ${{ matrix.project }}
+        run: |
+          chmod +x mvnw
+          ./mvnw -B test
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test web/test/*.test.js
+        working-directory: pjt3
+  mysql:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: pjt5
+            sql-directory: sql
+            test-class: JdbcTest
+          - project: pjt7
+            sql-directory: db
+            test-class: LiveApiTest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: yamyam_test
+          MYSQL_ROOT_PASSWORD: ci-root-password
+          MYSQL_USER: yamyam_test
+          MYSQL_PASSWORD: ci-only-password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -u yamyam_test -pci-only-password"
+          --health-interval=5s --health-timeout=5s --health-retries=30
+    env:
+      MYSQL_TEST_URL: jdbc:mysql://127.0.0.1:3306/yamyam_test?sslMode=REQUIRED
+      MYSQL_TEST_USER: yamyam_test
+      MYSQL_TEST_PASSWORD: ci-only-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Load schema and seeds
+        env:
+          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+          SQL_DIRECTORY: ${{ matrix.sql-directory }}
+        run: |
+          for file in schema foods demo; do
+            docker exec -i --env MYSQL_PWD="$MYSQL_TEST_PASSWORD" "$MYSQL_CONTAINER" \
+              mysql -u "$MYSQL_TEST_USER" --default-character-set=utf8mb4 yamyam_test < "$SQL_DIRECTORY/$file.sql"
+          done
+        working-directory: ${{ matrix.project }}
+      - name: Run MySQL integration tests
+        env:
+          MYSQL_TEST_CLASS: ${{ matrix.test-class }}
+        run: |
+          chmod +x mvnw
+          ./mvnw -B "-Dtest=$MYSQL_TEST_CLASS" test
+        working-directory: ${{ matrix.project }}
