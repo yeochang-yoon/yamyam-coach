@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "loginId": "demo01",
+      "passwordHash": {
+        "algorithm": "PBKDF2WithHmacSHA256",
+        "iterations": 600000,
+        "salt": "K7xw/PFucvD6V9+7PeomBw==",
+        "hash": "aqaNjauAVS4a1X2HUN+XlhnC4OX8S04bC94C1zELa/I="
+      },
+      "name": "김하늘",
+      "heightCm": 168,
+      "weightKg": 62.5,
+      "conditions": [],
+      "status": "ACTIVE"
+    },
+    {
+      "id": 2,
+      "loginId": "demo02",
+      "passwordHash": {
+        "algorithm": "PBKDF2WithHmacSHA256",
+        "iterations": 600000,
+        "salt": "03c/Vmlb/FjaX8WzlgI7yA==",
+        "hash": "mZq+ZCmwFaNJhTn1HEUVJjT15Da1D+Yw8uzE7qEmDzk="
+      },
+      "name": "이도윤",
+      "heightCm": 176,
+      "weightKg": 77.2,
+      "conditions": [
+        "고혈압"
+      ],
+      "status": "ACTIVE"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="먹은 음식을 기록하고 하루의 영양 섭취량을 확인하세요.">
+    <title>냠냠코치 · 식단 기록</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="app-width header-inner">
+        <button class="brand" type="button" data-page="meals">
+            <span class="brand-mark" aria-hidden="true">냠</span>
+            <span>냠냠코치</span>
+        </button>
+        <nav class="site-nav" aria-label="주 메뉴">
+            <button type="button" class="nav-button" data-page="meals">식단 기록</button>
+            <button type="button" class="nav-button" data-page="foods">음식 검색</button>
+            <button type="button" class="nav-button" data-page="profile" id="profile-nav" hidden>내
+                정보
+            </button>
+        </nav>
+        <div class="account-tools">
+            <span id="account-name" hidden></span>
+            <button type="button" class="btn btn-outline-secondary btn-sm" id="account-button">로그인
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="app-width main-content">
+    <p id="notice" class="alert alert-light" role="status">식단 데이터를 불러오는 중입니다.</p>
+
+    <section id="auth-section" class="auth-layout" aria-labelledby="auth-title" hidden>
+        <div class="panel auth-form-panel">
+            <h1 id="auth-title">로그인</h1>
+            <div class="auth-tabs" aria-label="회원 메뉴">
+                <button type="button" class="auth-tab active" id="show-login" aria-pressed="true">
+                    로그인
+                </button>
+                <button type="button" class="auth-tab" id="show-register" aria-pressed="false">
+                    회원가입
+                </button>
+            </div>
+            <form id="login-form" class="stack-form">
+                <label for="login-id">아이디</label>
+                <input class="form-control" id="login-id" name="loginId" required maxlength="24"
+                       autocomplete="username">
+                <label for="login-password">비밀번호</label>
+                <input class="form-control" id="login-password" name="password" type="password"
+                       required maxlength="128" autocomplete="current-password">
+                <button type="submit" class="btn btn-primary mt-2">로그인</button>
+            </form>
+            <form id="register-form" class="stack-form" hidden>
+                <label for="register-id">아이디</label>
+                <input class="form-control" id="register-id" name="loginId" required minlength="3"
+                       maxlength="24" pattern="[A-Za-z0-9_]{3,24}" autocomplete="username">
+                <label for="register-password">비밀번호 (8자 이상)</label>
+                <input class="form-control" id="register-password" name="password" type="password"
+                       minlength="8" maxlength="128" required autocomplete="new-password">
+                <label for="register-name">이름</label>
+                <input class="form-control" id="register-name" name="name" required maxlength="40"
+                       autocomplete="name">
+                <div class="field-pair">
+                    <div><label for="register-height">키 (cm)</label><input class="form-control"
+                                                                           id="register-height"
+                                                                           name="heightCm"
+                                                                           type="number" min="50"
+                                                                           max="250" step="any"
+                                                                           required></div>
+                    <div><label for="register-weight">몸무게 (kg)</label><input class="form-control"
+                                                                             id="register-weight"
+                                                                             name="weightKg"
+                                                                             type="number" min="10"
+                                                                             max="500" step="any"
+                                                                             required></div>
+                </div>
+                <label for="register-conditions">질환 (선택, 쉼표로 구분)</label>
+                <input class="form-control" id="register-conditions" name="conditions"
+                       maxlength="300">
+                <button type="submit" class="btn btn-primary mt-2">가입하기</button>
+            </form>
+        </div>
+        <div class="demo-panel">
+            <div>
+                <h2>데모 식단으로<br>둘러보기</h2>
+                <p>2025년 4월 21~27일 데모 식단 21건</p>
+            </div>
+            <div class="demo-account">
+                <div><span>아이디</span><strong>demo01</strong></div>
+                <div><span>비밀번호</span><strong>DemoMeal01!</strong></div>
+                <button type="button" class="btn btn-light" id="fill-demo">로그인 정보 채우기</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="meals-section" aria-labelledby="meals-title" hidden>
+        <div class="page-heading">
+            <h1 id="meals-title">식단 기록</h1>
+            <button type="button" class="btn btn-primary" id="new-meal">+ 식단 작성</button>
+        </div>
+
+        <section class="panel analysis-panel" aria-labelledby="analysis-title">
+            <div class="section-heading">
+                <h2 id="analysis-title">하루 영양 분석</h2>
+                <div class="date-filter"><label for="analysis-date">분석 날짜</label><input
+                        class="form-control" id="analysis-date" type="date"></div>
+            </div>
+            <div class="nutrition-grid">
+                <div class="nutrition-box"><span>열량</span><strong
+                        id="total-calories">0</strong><small>kcal</small></div>
+                <div class="nutrition-box"><span>탄수화물</span><strong
+                        id="total-carbs">0</strong><small>g</small></div>
+                <div class="nutrition-box"><span>단백질</span><strong
+                        id="total-protein">0</strong><small>g</small></div>
+                <div class="nutrition-box"><span>지방</span><strong
+                        id="total-fat">0</strong><small>g</small></div>
+            </div>
+            <p class="muted count-line" id="analysis-count"></p>
+        </section>
+
+        <section class="panel" id="editor-panel" aria-labelledby="editor-title" hidden>
+            <div class="section-heading">
+                <h2 id="editor-title">식단 작성</h2>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="close-editor">
+                    닫기
+                </button>
+            </div>
+            <form id="meal-form" class="stack-form">
+                <input type="hidden" name="mealId">
+                <div class="field-pair">
+                    <div><label for="meal-date">날짜</label><input class="form-control" id="meal-date"
+                                                                 name="date" type="date" required>
+                    </div>
+                    <div><label for="meal-type">끼니</label><select class="form-select" id="meal-type"
+                                                                  name="type">
+                        <option>아침</option>
+                        <option>점심</option>
+                        <option>저녁</option>
+                        <option>간식</option>
+                    </select></div>
+                </div>
+                <div id="food-items"></div>
+                <button type="button" class="btn btn-outline-secondary btn-sm align-self-start"
+                        id="add-food-row">+ 음식 추가
+                </button>
+                <label for="meal-note">메모 (선택)</label>
+                <textarea class="form-control" id="meal-note" name="note" maxlength="500"
+                          rows="2"></textarea>
+                <button type="submit" class="btn btn-primary align-self-start">식단 저장</button>
+            </form>
+        </section>
+
+        <div class="meal-columns">
+            <section class="panel" aria-labelledby="meal-list-title">
+                <div class="section-heading">
+                    <h2 id="meal-list-title">내 식단</h2>
+                    <select class="form-select list-filter" id="meal-filter" aria-label="식단 목록 범위">
+                        <option value="all">전체 식단</option>
+                        <option value="day">분석 날짜만</option>
+                    </select>
+                </div>
+                <p class="muted count-line" id="meal-count"></p>
+                <div class="table-responsive">
+                    <table class="table align-middle meal-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">날짜</th>
+                            <th scope="col">끼니</th>
+                            <th scope="col">음식</th>
+                            <th scope="col">관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id="meal-rows"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel ranking-panel" aria-labelledby="ranking-title">
+                <h2 id="ranking-title">음식별 섭취 열량</h2>
+                <ol id="ranking-list" class="ranking-list"></ol>
+                <p class="muted count-line" id="ranking-empty" hidden>이 날짜의 음식 기록이 없습니다.</p>
+            </section>
+        </div>
+
+        <section class="panel" id="detail-panel" aria-labelledby="detail-title" hidden>
+            <div class="section-heading">
+                <h2 id="detail-title" tabindex="-1">식단 상세</h2>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="close-detail">
+                    닫기
+                </button>
+            </div>
+            <p id="detail-meta" class="muted"></p>
+            <ul id="detail-foods" class="detail-foods"></ul>
+            <p id="detail-total"></p>
+            <p id="detail-note" class="muted"></p>
+        </section>
+    </section>
+
+    <section id="foods-section" aria-labelledby="foods-title" hidden>
+        <div class="page-heading"><h1 id="foods-title">음식 검색</h1></div>
+        <div class="panel">
+            <form id="food-search-form" class="search-form">
+                <div class="search-input">
+                    <label for="food-query">음식명 또는 식품코드</label>
+                    <input class="form-control" type="search" id="food-query" placeholder="예시 현미밥">
+                </div>
+                <div>
+                    <label for="food-search-mode">검색 방식</label>
+                    <select class="form-select" id="food-search-mode">
+                        <option value="contains">이름 포함 · 식품코드</option>
+                        <option value="prefix">이름 시작</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">검색</button>
+            </form>
+            <p class="muted count-line" id="food-count"></p>
+            <div class="table-responsive">
+                <table class="table align-middle catalog-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">음식</th>
+                        <th scope="col">기준량</th>
+                        <th scope="col">열량</th>
+                        <th scope="col">탄수화물</th>
+                        <th scope="col">단백질</th>
+                        <th scope="col">지방</th>
+                    </tr>
+                    </thead>
+                    <tbody id="catalog-rows"></tbody>
+                </table>
+            </div>
+            <div class="pagination-controls">
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="food-prev">이전
+                </button>
+                <span id="food-page"></span>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="food-next">다음
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile-section" aria-labelledby="profile-title" hidden>
+        <div class="page-heading"><h1 id="profile-title">내 정보</h1></div>
+        <div class="profile-layout">
+            <section class="panel" aria-labelledby="profile-edit-title">
+                <h2 id="profile-edit-title">프로필</h2>
+                <p class="muted profile-id" id="profile-login-id"></p>
+                <form id="profile-form" class="stack-form">
+                    <label for="profile-name">이름</label>
+                    <input class="form-control" id="profile-name" name="name" required
+                           maxlength="40" autocomplete="name">
+                    <div class="field-pair">
+                        <div><label for="profile-height">키 (cm)</label><input class="form-control"
+                                                                              id="profile-height"
+                                                                              name="heightCm"
+                                                                              type="number" min="50"
+                                                                              max="250" step="any"
+                                                                              required></div>
+                        <div><label for="profile-weight">몸무게 (kg)</label><input class="form-control"
+                                                                                id="profile-weight"
+                                                                                name="weightKg"
+                                                                                type="number"
+                                                                                min="10" max="500"
+                                                                                step="any" required>
+                        </div>
+                    </div>
+                    <label for="profile-conditions">질환 (선택, 쉼표로 구분)</label>
+                    <input class="form-control" id="profile-conditions" name="conditions"
+                           maxlength="300">
+                    <button type="submit" class="btn btn-primary align-self-start mt-2">프로필 저장
+                    </button>
+                </form>
+            </section>
+            <section class="panel" aria-labelledby="delete-title">
+                <h2 id="delete-title">회원 탈퇴</h2>
+                <p class="muted count-line">탈퇴하면 이 계정의 식단 기록도 삭제됩니다.</p>
+                <form id="delete-form" class="stack-form">
+                    <label for="delete-password">비밀번호 확인</label>
+                    <input class="form-control" id="delete-password" name="password" type="password"
+                           required maxlength="128" autocomplete="current-password">
+                    <button type="submit" class="btn btn-outline-danger align-self-start mt-2">회원
+                        탈퇴
+                    </button>
+                </form>
+            </section>
+        </div>
+    </section>
+</main>
+
+<template id="food-row-template">
+    <div class="food-entry">
+        <label>음식 찾기<input class="form-control item-query" type="search"
+                           placeholder="음식명 또는 코드"></label>
+        <label>음식 선택<select class="form-select item-food" required></select></label>
+        <label>섭취량 <span class="item-unit"></span><input class="form-control item-amount"
+                                                         type="number" step="any" max="5000"
+                                                         required></label>
+        <button type="button" class="btn btn-outline-danger btn-sm item-remove">제거</button>
+    </div>
+</template>
+<script src="js/domain.js" defer></script>
+<script src="js/adapter.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
